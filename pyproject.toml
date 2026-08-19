@@ -5,17 +5,17 @@ description = "A multi-agent long-form novel translation system with context, te
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "openai>=1.40",        # DeepSeek（OpenAI 兼容）调用
-    "pydantic>=2.7",       # 模型 / 配置校验
-    "pyyaml>=6.0",         # 读取 config.yaml
-    "tenacity>=8.2",       # LLM 调用重试/退避
-    "beautifulsoup4>=4.12", # EPUB 正文块提取
-    "httpx>=0.27",         # PDF 转换服务 HTTP 客户端
-    "lxml>=5.0",           # bs4 的 XHTML 解析后端
-    "ebooklib>=0.18",      # EPUB 读写
-    "typer>=0.12",         # CLI
-    "rich>=13.7",          # 表格 / 进度条
-    "json-repair>=0.61,<1", # 仅用于 Reviewer 畸形 JSON 的本地修复
+    "openai>=1.40",        # OpenAI-compatible API calls (e.g., DeepSeek)
+    "pydantic>=2.7",       # Data model and configuration validation
+    "pyyaml>=6.0",         # Read config.yaml
+    "tenacity>=8.2",       # Automatic retry and exponential backoff for LLM calls
+    "beautifulsoup4>=4.12", # Extract body text blocks from EPUB
+    "httpx>=0.27",         # HTTP client for PDF conversion service
+    "lxml>=5.0",           # XHTML parser backend for BeautifulSoup
+    "ebooklib>=0.18",      # EPUB read and write
+    "typer>=0.12",         # CLI framework
+    "rich>=13.7",          # Rich terminal output (tables, progress bars)
+    "json-repair>=0.61,<1", # Local repair of malformed JSON from Reviewer
     "pypdf>=6.14.2",
     "google-genai>=2.13.0",
     "python-bidi>=0.4.2",   # BiDi text handling for multilingual output
@@ -44,9 +44,9 @@ target-version = "py310"
 line-length = 100
 
 [tool.ruff.lint]
-# E/W pycodestyle, F pyflakes, I import 排序
+# E/W pycodestyle, F pyflakes, I import ordering
 select = ["E", "W", "F", "I"]
-# 超长行主要是中文 prompt 字面量，formatter 不会拆字符串
+# Long lines mainly contain Chinese prompt literals which formatter won't split
 ignore = ["E501"]
 
 [tool.pytest.ini_options]
